@@ -37,8 +37,6 @@ namespace Assesment.API.Controllers
         }
 
         [HttpPost("Create")]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
         public async Task<ActionResult<Employee>> Create([FromBody]Employee employee)
         {
             if (!ModelState.IsValid)
@@ -57,7 +55,8 @@ namespace Assesment.API.Controllers
                 return NotFound();
             return updatedEmployee;
         }
-        [HttpPost("{id}")]
+
+        [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> Delete(int id)
         {
             if (id < 1)
